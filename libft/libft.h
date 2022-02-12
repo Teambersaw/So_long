@@ -6,7 +6,7 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 16:00:42 by jrossett          #+#    #+#             */
-/*   Updated: 2022/02/12 15:39:31 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/12 16:12:55 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strchr(const char *s, int c);
+char	*get_next_line(int fd, int buffer);
 
 int		ft_atoi(const char *nptr);
 size_t	ft_strlen(const char *s);
