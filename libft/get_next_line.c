@@ -6,7 +6,7 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 19:33:29 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/12 15:38:49 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/13 21:33:21 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_matrix(char	*str, char	*line)
 	return (mew);
 }
 
-char	*ft_free(char *str, char *tmp)
+char	*ft_free_gnl(char *str, char *tmp)
 {
 	free(str);
 	free(tmp);
@@ -73,7 +73,7 @@ char	*ft_memory(int fd, char *str, int buffer)
 		str = ft_strjoin_gnl(str, tmp);
 	}
 	if (!byte && !*str)
-		return (ft_free(str, tmp));
+		return (ft_free_gnl(str, tmp));
 	free(tmp);
 	return (str);
 }
