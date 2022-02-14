@@ -3,24 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+         #
+#    By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/12 14:42:37 by teambersaw        #+#    #+#              #
-#    Updated: 2022/02/13 20:18:15 by teambersaw       ###   ########.fr        #
+#    Updated: 2022/02/14 16:25:02 by jrossett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= gcc
 
-#CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror
 
-SRCS= so_long.c \
+SRCS= so_long.c map_check_1.c map_check_2.c map_check_3.c \
 
 OBJS= ${SRCS:.c=.o}
 
 NAME= so_long
 
-${NAME}: ${OBJS}
+${NAME}: ${OBJS} so_long.h
 	${MAKE} -s all -C libft
 	${CC} ${OBJS} libft/libft.a -o ${NAME}
 

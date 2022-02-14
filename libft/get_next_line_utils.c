@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:27:02 by jrossett          #+#    #+#             */
-/*   Updated: 2022/02/12 15:35:02 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/14 16:27:16 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
