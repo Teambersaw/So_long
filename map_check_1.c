@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:57:12 by jrossett          #+#    #+#             */
-/*   Updated: 2022/02/14 16:24:30 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:14:29 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	ft_parse_join(char *join)
 
 int	ft_little_verif(t_parse *parse, char **map)
 {
-	if (parse->len < 5)
+	if (parse->len < 3)
 		return (-1);
 	while (map[parse->i])
 		parse->i++;
-	if (parse->i >= parse->len)
+	if (parse->i < 3)
 		return (-1);
 	if (ft_parse_one(map[0]) || ft_parse_one(map[parse->i - 1]))
 		return (-1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:00 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/14 16:24:28 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:27:29 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	ft_error(char *str, int fd, char *line, char *sfree);
 void	ft_objet(char **map, t_elem *elem, t_parse parse);
 int		ft_little_verif(t_parse *parse, char **map);
 void	ft_ber(char *ber);
+int		main(int ac, char **av);
 
 #endif
