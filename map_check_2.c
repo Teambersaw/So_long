@@ -6,7 +6,7 @@
 /*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 15:00:50 by jrossett          #+#    #+#             */
-/*   Updated: 2022/02/14 15:10:30 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:39:38 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,13 @@ void	ft_ber(char *ber)
 int	ft_check_arg(int ac, char **av)
 {
 	int	fd;
+	int	fdd;
 
 	if (ac != 2)
 		ft_error("Wrong number of arguments\n", 0, NULL, NULL);
+	fdd = open(av[1], __O_DIRECTORY);
+	if (fdd > 0)
+		ft_error("Argument is a directory\n", fdd, NULL, NULL);
 	ft_ber(av[1]);
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
@@ -76,7 +80,7 @@ char	**ft_initmap(int fd)
 			ft_error("Malloc failed\n", fd, line, NULL);
 		free(line);
 	}
-	if (join[lenso(join) - 1] != '1' || ft_parse_join(join))
+	if (!join || join[lenso(join) - 1] != '1' || ft_parse_join(join))
 		ft_error("Invalid map\n", fd, line, join);
 	map = ft_split(join, '\n');
 	if (!map)

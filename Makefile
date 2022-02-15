@@ -6,7 +6,7 @@
 #    By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/12 14:42:37 by teambersaw        #+#    #+#              #
-#    Updated: 2022/02/14 16:25:02 by jrossett         ###   ########.fr        #
+#    Updated: 2022/02/15 15:34:29 by jrossett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ NAME= so_long
 
 ${NAME}: ${OBJS} so_long.h
 	${MAKE} -s all -C libft
-	${CC} ${OBJS} libft/libft.a -o ${NAME}
+	${CC} ${CFLAGS} ${OBJS} libft/libft.a -o ${NAME}
 
 all: ${NAME}
 
