@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:57:12 by jrossett          #+#    #+#             */
-/*   Updated: 2022/02/15 21:14:29 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/17 15:16:03 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ char	**ft_check_map(int ac, char **av, t_elem *elem)
 		ft_free(map, NULL);
 		ft_error("Invalid map\n", fd, NULL, NULL);
 	}
+	close(fd);
 	return (map);
 }

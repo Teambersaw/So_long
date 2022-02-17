@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+         #
+#    By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/12 14:42:37 by teambersaw        #+#    #+#              #
-#    Updated: 2022/02/15 22:35:39 by teambersaw       ###   ########.fr        #
+#    Updated: 2022/02/17 15:05:29 by jrossett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= gcc
 
-CFLAGS= -Wall -Wextra -Werror
+#CFLAGS= -Wall -Wextra -Werror
 
 SRCS= so_long.c map_check_1.c map_check_2.c map_check_3.c \
 
@@ -24,13 +24,15 @@ NAME= so_long
 
 ${NAME}: ${OBJS} ${HEADER}
 	${MAKE} -s all -C libft
-	${CC} ${CFLAGS} ${OBJS} libft/libft.a -o ${NAME}
+	${MAKE} -s all -C minilibx-linux
+	${CC} ${OBJS} libft/libft.a minilibx-linux/libmlx.a -lXext -lX11 -o ${NAME}
 
 all: ${NAME}
 
 clean:
 	rm -f ${OBJS}
 	${MAKE} -s clean -C libft
+	${MAKE} -s clean -C minilibx-linux
 
 fclean: clean
 	rm -f ${NAME}
