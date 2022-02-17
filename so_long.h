@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:00 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/17 11:54:07 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/17 23:35:57 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,23 @@ typedef struct s_parse
 	int	len;
 }	t_parse;
 
+typedef struct s_image
+{
+	void	*floor;
+	void	*wall;
+	void	*objet;
+	void	*perso;
+	void	*exit;	
+} 			t_image;
+
+typedef struct s_pos
+{
+	int	i;
+	int	j;
+	int	x;
+	int	y;
+}	t_pos;
+
 t_elem	ft_init_elem(void);
 t_parse	ft_init_parse(char *map);
 char	**ft_initmap(int fd);
@@ -54,6 +71,6 @@ void	ft_error(char *str, int fd, char *line, char *sfree);
 void	ft_objet(char **map, t_elem *elem, t_parse parse);
 int		ft_little_verif(t_parse *parse, char **map);
 void	ft_ber(char *ber);
-int		main_parse(int ac, char **av);
+char	**main_parse(int ac, char **av);
 
 #endif
