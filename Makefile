@@ -6,15 +6,15 @@
 #    By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/12 14:42:37 by teambersaw        #+#    #+#              #
-#    Updated: 2022/02/17 23:41:34 by teambersaw       ###   ########.fr        #
+#    Updated: 2022/02/18 16:30:37 by teambersaw       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= gcc
 
-CFLAGS= -Wall -Wextra -Werror
+#CFLAGS= -Wall -Wextra -Werror
 
-SRCS= so_long.c map_check_1.c map_check_2.c map_check_3.c \
+SRCS= so_long.c map_check_1.c map_check_2.c map_check_3.c move.c check_move.c create_win.c \
 
 OBJS= ${SRCS:.c=.o}
 
