@@ -6,7 +6,7 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 16:03:21 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/18 17:30:34 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/19 00:13:08 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_image	ft_init_image(void *mlx)
 	image.objet = mlx_xpm_file_to_image(mlx, "sprites/objet.xpm", &x, &y);
 	image.exit = mlx_xpm_file_to_image(mlx, "sprites/exit.xpm", &x, &y);
 	image.perso = mlx_xpm_file_to_image(mlx, "sprites/perso.xpm", &x, &y);
+	image.exiton = mlx_xpm_file_to_image(mlx, "sprites/exiton.xpm", &x, &y);
 	return (image);
 }
 

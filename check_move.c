@@ -6,73 +6,94 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:59:54 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/18 19:21:31 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/19 01:27:24 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_move_up(t_init *init, t_pos *move)
+void	ft_move_up(t_init *init)
 {
-	if (init->map[move->y - 1][move->x] == '1')
-	{
-		printf("nop\n");
+	if (init->map[init->move.y - 1][init->move.x] == '1')
 		return ;
-	}
-	else if (init->map[move->y - 1][move->x] == 'C')
-		ft_collect(init, move, 'U');
-	else if (init->map[move->y - 1][move->x] == 'E')
-		ft_exit(init, move, 'U');
+	init->move.y -= 1;
+	if (init->map[init->move.y + 1][init->move.x] == 'E')
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.exit, init->move.x * 64, init->move.i * 64);
 	else
-		ft_move(init, move, 'U');
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.x * 64, init->move.i * 64);
+	if (init->map[init->move.y][init->move.x] == 'E')
+	{
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.x * 64, init->move.i * 64);
+		ft_exit(init);
+	}
+	if (init->map[init->move.y][init->move.x] == 'C')
+		ft_collect(init);
+	if (init->map[init->move.y][init->move.x] == '0')
+		ft_move(init);
 }
 
-void	ft_move_down(t_init *init, t_pos *move)
+void	ft_move_down(t_init *init)
 {
-	if (init->map[move->y + 1][move->x] == '1')
-	{
-		printf("nop\n");
+	if (init->map[init->move.y + 1][init->move.x] == '1')
 		return ;
-	}
-	else if (init->map[move->y + 1][move->x] == 'C')
-		ft_collect(init, move, 'D');
-	else if (init->map[move->y + 1][move->x] == 'E')
-		ft_exit(init, move, 'D');
+	
+	init->move.y += 1;
+	if (init->map[init->move.y - 1][init->move.x] == 'E')
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.exit, init->move.x * 64, init->move.i * 64);
 	else
-		ft_move(init, move, 'D');
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.x * 64, init->move.i * 64);
+	if (init->map[init->move.y][init->move.x] == 'E')
+	{
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.x * 64, init->move.i * 64);
+		ft_exit(init);
+	}
+	if (init->map[init->move.y][init->move.x] == 'C')
+		ft_collect(init);
+	if (init->map[init->move.y][init->move.x] == '0')
+		ft_move(init);
 }
 
-void	ft_move_right(t_init *init, t_pos *move)
+void	ft_move_right(t_init *init)
 {
-	if (init->map[move->y][move->x + 1] == '1')
-	{
-		printf("nop\n");
+	if (init->map[init->move.y][init->move.x + 1] == '1')
 		return ;
-	}
-	else if (init->map[move->y][move->x + 1] == 'C')
-		ft_collect(init, move, 'R');
-	else if (init->map[move->y][move->x + 1] == 'E')
-		ft_exit(init, move, 'R');
+	init->move.x += 1;
+	if (init->map[init->move.y][init->move.x - 1] == 'E')
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.exit, init->move.j * 64, init->move.y * 64);
 	else
-		ft_move(init, move, 'R');
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.j * 64, init->move.y * 64);
+	if (init->map[init->move.y][init->move.x] == 'E')
+	{
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.j * 64, init->move.y * 64);
+		ft_exit(init);
+	}
+	if (init->map[init->move.y][init->move.x] == 'C')
+		ft_collect(init);
+	if (init->map[init->move.y][init->move.x] == '0')
+		ft_move(init);
 }
 
-void	ft_move_left(t_init *init, t_pos *move)
+void	ft_move_left(t_init *init)
 {
-	if (init->map[move->y][move->x - 1] == '1')
-	{
-		printf("nop\n");
+	if (init->map[init->move.y][init->move.x - 1] == '1')
 		return ;
-	}
-	else if (init->map[move->y][move->x - 1] == 'C')
-		ft_collect(init, move, 'L');
-	else if (init->map[move->y][move->x - 1] == 'E')
-		ft_exit(init, move, 'L');
+	init->move.x -= 1;
+	if (init->map[init->move.y][init->move.x + 1] == 'E')
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.exit, init->move.j * 64, init->move.y * 64);
 	else
-		ft_move(init, move, 'L');
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.j * 64, init->move.y * 64);
+	if (init->map[init->move.y][init->move.x] == 'E')
+	{
+		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.j * 64, init->move.y * 64);
+		ft_exit(init);
+	}
+	if (init->map[init->move.y][init->move.x] == 'C')
+		ft_collect(init);
+	if (init->map[init->move.y][init->move.x] == '0')
+		ft_move(init);
 }
 
-void	ft_quit(t_init *init, t_pos *move)
+void	ft_quit(t_init *init)
 {
 	printf("quit\n");
 	mlx_destroy_window(init->mlx, init->mlx_win);
