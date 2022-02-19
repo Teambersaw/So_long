@@ -6,7 +6,7 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:59:54 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/19 01:32:15 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/19 16:26:48 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	ft_move_down(t_init *init)
 {
 	if (init->map[init->move.y + 1][init->move.x] == '1')
 		return ;
-	
 	init->move.y += 1;
 	if (init->map[init->move.y - 1][init->move.x] == 'E')
 		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.exit, init->move.x * 64, init->move.i * 64);

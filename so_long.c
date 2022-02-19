@@ -6,7 +6,7 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:03 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/19 00:58:26 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/19 17:28:05 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ t_pos	ft_get_pos(char **map)
 
 int	key_hook(int key_code, t_init *init)
 {
+	if (key_code == 65307)
+		ft_quit(init);
 	if (key_code == 119 || key_code == 65362)
 		ft_move_up(init);
 	if (key_code == 115 || key_code == 65364)
@@ -69,8 +71,6 @@ int	key_hook(int key_code, t_init *init)
 		ft_move_left(init);
 	if (key_code == 100 || key_code == 65363)
 		ft_move_right(init);
-	if (key_code == 65307)
-		ft_quit(init);
 	return (0);
 }
 
@@ -98,6 +98,10 @@ int	main(int ac, char **av)
 	init.map[init.move.y][init.move.x] = '0';
 	mlx_key_hook(init.mlx_win, key_hook, &init);
 	mlx_loop(init.mlx);
+	//mlx_loop_end()
+	//mlx_mouse_hook();
+	//mlx_destroy_image();
 	ft_free(init.map, NULL);
 }
 //printf("pose :%d, %d\n", move->y, move->x);
+//new window &  mlx_init return null en cas d erreur
