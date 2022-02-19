@@ -6,7 +6,7 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:59:54 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/19 01:27:24 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/19 01:32:15 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ void	ft_move_up(t_init *init)
 	else
 		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.x * 64, init->move.i * 64);
 	if (init->map[init->move.y][init->move.x] == 'E')
-	{
-		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.x * 64, init->move.i * 64);
 		ft_exit(init);
-	}
 	if (init->map[init->move.y][init->move.x] == 'C')
 		ft_collect(init);
 	if (init->map[init->move.y][init->move.x] == '0')
@@ -43,10 +40,7 @@ void	ft_move_down(t_init *init)
 	else
 		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.x * 64, init->move.i * 64);
 	if (init->map[init->move.y][init->move.x] == 'E')
-	{
-		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.x * 64, init->move.i * 64);
 		ft_exit(init);
-	}
 	if (init->map[init->move.y][init->move.x] == 'C')
 		ft_collect(init);
 	if (init->map[init->move.y][init->move.x] == '0')
@@ -63,10 +57,7 @@ void	ft_move_right(t_init *init)
 	else
 		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.j * 64, init->move.y * 64);
 	if (init->map[init->move.y][init->move.x] == 'E')
-	{
-		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.j * 64, init->move.y * 64);
 		ft_exit(init);
-	}
 	if (init->map[init->move.y][init->move.x] == 'C')
 		ft_collect(init);
 	if (init->map[init->move.y][init->move.x] == '0')
@@ -83,10 +74,7 @@ void	ft_move_left(t_init *init)
 	else
 		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.j * 64, init->move.y * 64);
 	if (init->map[init->move.y][init->move.x] == 'E')
-	{
-		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.floor, init->move.j * 64, init->move.y * 64);
 		ft_exit(init);
-	}
 	if (init->map[init->move.y][init->move.x] == 'C')
 		ft_collect(init);
 	if (init->map[init->move.y][init->move.x] == '0')
