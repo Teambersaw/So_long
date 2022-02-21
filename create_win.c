@@ -6,42 +6,42 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 16:03:21 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/19 00:13:08 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/21 21:57:38 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_put_image(void *mlx, void *mlx_window, char **map, t_image image)
+void	ft_put_image(void *mlx, void *mlx_window, t_init *init, t_image image)
 {
 	t_pos	pos;
 
 	pos = ft_init_pos();
-	while(map[pos.i])
+	while(init->map[pos.i])
 	{
 		pos.j = 0;
-		while(map[pos.i][pos.j])
+		while(init->map[pos.i][pos.j])
 		{
-			if (map[pos.i][pos.j] == '1')
+			if (init->map[pos.i][pos.j] == '1')
 				mlx_put_image_to_window(mlx, mlx_window, image.wall, pos.x, pos.y);
-			if (map[pos.i][pos.j] == '0')
+			if (init->map[pos.i][pos.j] == '0')
 				mlx_put_image_to_window(mlx, mlx_window, image.floor, pos.x, pos.y);
-			if (map[pos.i][pos.j] == 'E')
+			if (init->map[pos.i][pos.j] == 'E')
 				mlx_put_image_to_window(mlx, mlx_window, image.exit, pos.x, pos.y);
-			if (map[pos.i][pos.j] == 'P')
+			if (init->map[pos.i][pos.j] == 'P')
 				mlx_put_image_to_window(mlx, mlx_window, image.perso, pos.x, pos.y);
-			if (map[pos.i][pos.j] == 'C')
+			if (init->map[pos.i][pos.j] == 'C')
 				mlx_put_image_to_window(mlx, mlx_window, image.objet, pos.x, pos.y);
 			pos.j++;
-			pos.x += 64;
+			pos.x += init->var;
 		}
 		pos.x = 0;
 		pos.i++;
-		pos.y += 64;
+		pos.y += init->var;
 	}
 }
 
-void	*ft_init_window(char **map, void *mlx)
+void	*ft_init_window(char **map, void *mlx, int var)
 {
 	int	x;
 	int	y;
@@ -51,18 +51,18 @@ void	*ft_init_window(char **map, void *mlx)
 	x = lenso(map[0]);
 	while (map[y])
 		y++;
-	mlx_window = mlx_new_window(mlx, x * 64, y * 64, "So_long");
+	mlx_window = mlx_new_window(mlx, x * var, y * var, "So_long");
 	return (mlx_window);
 }
 
-t_image	ft_init_image(void *mlx)
+t_image	ft_init_image(void *mlx, int var)
 {
 	t_image	image;
 	int		x;
 	int		y;
 
-	x = 64;
-	y = 64;
+	x = var;
+	y = var;
 	image.floor = mlx_xpm_file_to_image(mlx, "sprites/floor.xpm", &x, &y);
 	image.wall = mlx_xpm_file_to_image(mlx, "sprites/wall.xpm", &x, &y);
 	image.objet = mlx_xpm_file_to_image(mlx, "sprites/objet.xpm", &x, &y);

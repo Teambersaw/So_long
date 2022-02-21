@@ -6,7 +6,7 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:03 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/19 17:28:05 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/21 23:14:38 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,13 @@ t_init	ft_init_struct(int ac, char **av)
 
 	init.map = main_parse(ac, av);
 	init.mlx = mlx_init();
-	init.mlx_win = ft_init_window(init.map, init.mlx);
-	init.image = ft_init_image(init.mlx);
+	init.var = 64;
+	init.mlx_win = ft_init_window(init.map, init.mlx, init.var);
+	init.image = ft_init_image(init.mlx, init.var);
 	init.move = ft_get_pos(init.map);
 	init.sac = 0;
 	init.max = ft_count_collect(init.map);
-	init.var = 0;
+	init.count = 0;
 	return (init);
 }
 
@@ -94,8 +95,9 @@ int	main(int ac, char **av)
 	t_init init;
 
 	init = ft_init_struct(ac, av);
-	ft_put_image(init.mlx, init.mlx_win, init.map, init.image);
+	ft_put_image(init.mlx, init.mlx_win, &init, init.image);
 	init.map[init.move.y][init.move.x] = '0';
+	write(1, "0\n", 2);
 	mlx_key_hook(init.mlx_win, key_hook, &init);
 	mlx_loop(init.mlx);
 	//mlx_loop_end()

@@ -6,7 +6,7 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:00 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/19 00:12:15 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/21 22:01:05 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,13 @@ typedef struct s_init
 	int		sac;
 	int		max;
 	int		var;
+	int		count;
 }	t_init;
 
 t_elem	ft_init_elem(void);
 t_parse	ft_init_parse(char *map);
 t_pos	ft_init_pos(void);
-t_image	ft_init_image(void *mlx);
+t_image	ft_init_image(void *mlx, int var);
 t_init	ft_init_struct(int ac, char **av);
 t_pos	ft_get_pos(char **map);
 char	**ft_initmap(int fd);
@@ -85,9 +86,9 @@ int		ft_valid_map(char **map, t_elem *elem);
 char	**ft_check_map(int ac, char **av, t_elem *elem);
 void	ft_free(char **tab, char *str);
 void	ft_error(char *str, int fd, char *line, char *sfree);
-void	ft_put_image(void *mlx, void *mlx_window, char **map, t_image image);
+void	ft_put_image(void *mlx, void *mlx_window, t_init *init, t_image image);
 void	ft_objet(char **map, t_elem *elem, t_parse parse);
-void	*ft_init_window(char **map, void *mlx);
+void	*ft_init_window(char **map, void *mlx, int var);
 int		ft_little_verif(t_parse *parse, char **map);
 void	ft_ber(char *ber);
 char	**main_parse(int ac, char **av);
