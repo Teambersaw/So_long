@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   create_win.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 16:03:21 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/21 21:57:38 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/22 15:15:56 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_put_image(void *mlx, void *mlx_window, t_init *init, t_image image)
+void	ft_put_image(void *mlx, void *mlx_w, t_init *init, t_image image)
 {
 	t_pos	pos;
 
 	pos = ft_init_pos();
-	while(init->map[pos.i])
+	while (init->map[pos.i])
 	{
 		pos.j = 0;
-		while(init->map[pos.i][pos.j])
+		while (init->map[pos.i][pos.j])
 		{
 			if (init->map[pos.i][pos.j] == '1')
-				mlx_put_image_to_window(mlx, mlx_window, image.wall, pos.x, pos.y);
+				mlx_put_image_to_window(mlx, mlx_w, image.wall, pos.x, pos.y);
 			if (init->map[pos.i][pos.j] == '0')
-				mlx_put_image_to_window(mlx, mlx_window, image.floor, pos.x, pos.y);
+				mlx_put_image_to_window(mlx, mlx_w, image.floor, pos.x, pos.y);
 			if (init->map[pos.i][pos.j] == 'E')
-				mlx_put_image_to_window(mlx, mlx_window, image.exit, pos.x, pos.y);
+				mlx_put_image_to_window(mlx, mlx_w, image.exit, pos.x, pos.y);
 			if (init->map[pos.i][pos.j] == 'P')
-				mlx_put_image_to_window(mlx, mlx_window, image.perso, pos.x, pos.y);
+				mlx_put_image_to_window(mlx, mlx_w, image.perso, pos.x, pos.y);
 			if (init->map[pos.i][pos.j] == 'C')
-				mlx_put_image_to_window(mlx, mlx_window, image.objet, pos.x, pos.y);
+				mlx_put_image_to_window(mlx, mlx_w, image.objet, pos.x, pos.y);
 			pos.j++;
 			pos.x += init->var;
 		}
@@ -43,8 +43,8 @@ void	ft_put_image(void *mlx, void *mlx_window, t_init *init, t_image image)
 
 void	*ft_init_window(char **map, void *mlx, int var)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	void	*mlx_window;
 
 	y = 0;

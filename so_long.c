@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:03 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/21 23:14:38 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/22 15:26:20 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_count_collect(char **map)
 {
 	int	i;
 	int	j;
-	int collectible;
+	int	collectible;
 
 	collectible = 0;
 	i = 0;
@@ -58,18 +58,17 @@ t_pos	ft_get_pos(char **map)
 	return (move);
 }
 
-
 int	key_hook(int key_code, t_init *init)
 {
 	if (key_code == 65307)
 		ft_quit(init);
-	if (key_code == 119 || key_code == 65362)
+	if (key_code == 'w' || key_code == 65362)
 		ft_move_up(init);
-	if (key_code == 115 || key_code == 65364)
+	if (key_code == 's' || key_code == 65364)
 		ft_move_down(init);
-	if (key_code == 113 || key_code == 65361)
+	if (key_code == 'a' || key_code == 65361)
 		ft_move_left(init);
-	if (key_code == 100 || key_code == 65363)
+	if (key_code == 'd' || key_code == 65363)
 		ft_move_right(init);
 	return (0);
 }
@@ -92,18 +91,21 @@ t_init	ft_init_struct(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	t_init init;
+	t_init	init;
 
 	init = ft_init_struct(ac, av);
 	ft_put_image(init.mlx, init.mlx_win, &init, init.image);
 	init.map[init.move.y][init.move.x] = '0';
 	write(1, "0\n", 2);
-	mlx_key_hook(init.mlx_win, key_hook, &init);
+	mlx_hook(init.mlx_win, 2, (1L << 0), key_hook, &init);
+	mlx_hook(init.mlx_win, 17, (1L << 0), mlx_loop_end, init.mlx);
 	mlx_loop(init.mlx);
-	//mlx_loop_end()
-	//mlx_mouse_hook();
-	//mlx_destroy_image();
+	mlx_destroy_image(init.mlx, init.image.exit);
+	mlx_destroy_image(init.mlx, init.image.perso);
+	mlx_destroy_image(init.mlx, init.image.wall);
+	mlx_destroy_image(init.mlx, init.image.floor);
+	mlx_destroy_image(init.mlx, init.image.exiton);
+	mlx_destroy_image(init.mlx, init.image.objet);
+	mlx_destroy_window(init.mlx, init.mlx_win);
 	ft_free(init.map, NULL);
 }
-//printf("pose :%d, %d\n", move->y, move->x);
-//new window &  mlx_init return null en cas d erreur

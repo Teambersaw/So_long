@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:00 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/21 22:01:05 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/22 12:18:35 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_image
 	void	*perso;
 	void	*exit;
 	void	*exiton;	
-} 			t_image;
+}			t_image;
 
 typedef struct s_pos
 {
