@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:03 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/22 15:26:20 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:55:26 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,7 @@ int	main(int ac, char **av)
 	mlx_destroy_image(init.mlx, init.image.exiton);
 	mlx_destroy_image(init.mlx, init.image.objet);
 	mlx_destroy_window(init.mlx, init.mlx_win);
+	mlx_destroy_display(init.mlx);
+	free(init.mlx);
 	ft_free(init.map, NULL);
 }
