@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:03 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/22 17:55:26 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/23 13:19:57 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ t_init	ft_init_struct(int ac, char **av)
 
 	init.map = main_parse(ac, av);
 	init.mlx = mlx_init();
+	if (!init.mlx)
+	{
+		ft_free(init.map, NULL);
+		exit(1);
+	}
 	init.var = 64;
 	init.mlx_win = ft_init_window(init.map, init.mlx, init.var);
 	init.image = ft_init_image(init.mlx, init.var);
@@ -110,4 +115,5 @@ int	main(int ac, char **av)
 	mlx_destroy_display(init.mlx);
 	free(init.mlx);
 	ft_free(init.map, NULL);
+	return (0);
 }

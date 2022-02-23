@@ -6,7 +6,7 @@
 /*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 15:00:50 by jrossett          #+#    #+#             */
-/*   Updated: 2022/02/15 15:39:38 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/23 13:37:25 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_check_arg(int ac, char **av)
 	if (fdd > 0)
 		ft_error("Argument is a directory\n", fdd, NULL, NULL);
 	ft_ber(av[1]);
-	fd = open(av[1], O_RDONLY);
+	fd = open(av[1], O_RDONLY | __O_NOFOLLOW);
 	if (fd == -1)
 		ft_error("Invalid file\n", 0, NULL, NULL);
 	return (fd);
