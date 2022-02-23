@@ -6,7 +6,7 @@
 /*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 16:03:21 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/22 15:15:56 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/23 15:54:34 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ t_image	ft_init_image(void *mlx, int var)
 	image.exit = mlx_xpm_file_to_image(mlx, "sprites/exit.xpm", &x, &y);
 	image.perso = mlx_xpm_file_to_image(mlx, "sprites/perso.xpm", &x, &y);
 	image.exiton = mlx_xpm_file_to_image(mlx, "sprites/exiton.xpm", &x, &y);
+	if (!(image.floor || image.wall || image.exit || image.exiton || image.perso || image.objet)
+		ft_free_image();
 	return (image);
 }
 

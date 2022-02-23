@@ -6,11 +6,54 @@
 /*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:59:10 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/22 14:42:51 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/23 15:55:28 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void ft_free_image(t_image *image)
+{
+	
+}
+
+void	ft_hola(char **map, void *mlx, int i)
+{
+	if (mlx)
+		mlx_destroy_display(mlx);
+	ft_free(map, mlx);
+	if (i == 0)
+		ft_putstr_fd("Error occurred: init the mlx\n", 2);
+	else if (i == 1)
+		ft_putstr_fd("Your map is too big ! This is not a Ubisoft game !\n", 2);
+	else if (i == 2)
+		ft_putstr_fd("Error occurred: create mlx window\n", 2);
+	exit(1);
+}
+
+int	ft_size(void *mlx, char **map)
+{
+	int	x;
+	int	y;
+	int	var;
+	int	i;
+
+	x = 0;
+	y = 0;
+	i = 0;
+	var = 128;
+	while (map[i])
+		i++;
+	mlx_get_screen_size(mlx, &x, &y);
+	while (var >= 16)
+	{
+		if (x >= lenso(map[0]) * var && y >= i * var)
+			return (var);
+		else
+			var = var / 2;
+	}
+	return (0);
+}
 
 void	ft_collect(t_init *init)
 {

@@ -6,7 +6,7 @@
 /*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:00 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/22 12:18:35 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/23 15:25:44 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ t_pos	ft_init_pos(void);
 t_image	ft_init_image(void *mlx, int var);
 t_init	ft_init_struct(int ac, char **av);
 t_pos	ft_get_pos(char **map);
+void	ft_hola(char **map, void *mlx, int i);
+int		ft_size(void *mlx, char **map);
 char	**ft_initmap(int fd);
 int		lenso(const char *s);
 int		ft_parse_join(char *join);

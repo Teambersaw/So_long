@@ -6,7 +6,7 @@
 /*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:03 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/23 13:19:57 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/23 15:33:43 by jrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,13 @@ t_init	ft_init_struct(int ac, char **av)
 	init.map = main_parse(ac, av);
 	init.mlx = mlx_init();
 	if (!init.mlx)
-	{
-		ft_free(init.map, NULL);
-		exit(1);
-	}
-	init.var = 64;
+		ft_hola(init.map, NULL, 0);
+	init.var = ft_size(init.mlx, init.map);
+	if (init.var == 0)
+		ft_hola(init.map, init.mlx, 1);
 	init.mlx_win = ft_init_window(init.map, init.mlx, init.var);
+	if (!init.mlx_win)
+		ft_hola(init.map, init.mlx, 2);
 	init.image = ft_init_image(init.mlx, init.var);
 	init.move = ft_get_pos(init.map);
 	init.sac = 0;
