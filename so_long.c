@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:03 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/23 15:33:43 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/24 17:30:50 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ t_init	ft_init_struct(int ac, char **av)
 	init.map = main_parse(ac, av);
 	init.mlx = mlx_init();
 	if (!init.mlx)
-		ft_hola(init.map, NULL, 0);
+		ft_hola(init.map, NULL, 0, NULL);
 	init.var = ft_size(init.mlx, init.map);
 	if (init.var == 0)
-		ft_hola(init.map, init.mlx, 1);
+		ft_hola(init.map, init.mlx, 1, NULL);
 	init.mlx_win = ft_init_window(init.map, init.mlx, init.var);
 	if (!init.mlx_win)
-		ft_hola(init.map, init.mlx, 2);
-	init.image = ft_init_image(init.mlx, init.var);
+		ft_hola(init.map, init.mlx, 2, NULL);
+	init.image = ft_init_image(init.mlx, init.var, init.map, init.mlx_win);
 	init.move = ft_get_pos(init.map);
 	init.sac = 0;
 	init.max = ft_count_collect(init.map);

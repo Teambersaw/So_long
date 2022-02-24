@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_win.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 16:03:21 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/23 15:54:34 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/24 17:45:45 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	*ft_init_window(char **map, void *mlx, int var)
 	return (mlx_window);
 }
 
-t_image	ft_init_image(void *mlx, int var)
+t_image	ft_init_image(void *mlx, int var, char **map, void *mlx_win)
 {
 	t_image	image;
 	int		x;
@@ -63,14 +63,21 @@ t_image	ft_init_image(void *mlx, int var)
 
 	x = var;
 	y = var;
+	image.floor = NULL;
+	image.exit = NULL;	
+	image.exiton = NULL;
+	image.wall = NULL;
+	image.perso = NULL;
+	image.objet = NULL;	
 	image.floor = mlx_xpm_file_to_image(mlx, "sprites/floor.xpm", &x, &y);
 	image.wall = mlx_xpm_file_to_image(mlx, "sprites/wall.xpm", &x, &y);
 	image.objet = mlx_xpm_file_to_image(mlx, "sprites/objet.xpm", &x, &y);
 	image.exit = mlx_xpm_file_to_image(mlx, "sprites/exit.xpm", &x, &y);
 	image.perso = mlx_xpm_file_to_image(mlx, "sprites/perso.xpm", &x, &y);
 	image.exiton = mlx_xpm_file_to_image(mlx, "sprites/exiton.xpm", &x, &y);
-	if (!(image.floor || image.wall || image.exit || image.exiton || image.perso || image.objet)
-		ft_free_image();
+	if (image.floor == NULL || image.wall == NULL || image.exit == NULL ||
+		image.exiton == NULL || image.perso == NULL || image.objet == NULL)
+		ft_free_image(&image, mlx, map, mlx_win);
 	return (image);
 }
 

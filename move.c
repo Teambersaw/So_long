@@ -3,31 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:59:10 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/23 15:55:28 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/24 17:34:38 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_free_image(t_image *image)
+void ft_free_image(t_image *image, void *mlx, char **map, void *mlx_win)
 {
-	
+	if (image->exit)
+		mlx_destroy_image(mlx, image->exit);
+	if (image->exiton)
+		mlx_destroy_image(mlx, image->exiton);
+	if (image->perso)
+		mlx_destroy_image(mlx, image->perso);
+	if (image->objet)
+		mlx_destroy_image(mlx, image->objet);
+	if (image->wall)
+		mlx_destroy_image(mlx, image->wall);
+	if (image->floor)
+		mlx_destroy_image(mlx, image->floor);
+	ft_hola(map, mlx, 3, mlx_win);
 }
 
-void	ft_hola(char **map, void *mlx, int i)
+void	ft_hola(char **map, void *mlx, int i, void *mlx_win)
 {
+	if (mlx_win)
+		mlx_destroy_window(mlx, mlx_win);
 	if (mlx)
+	{
 		mlx_destroy_display(mlx);
-	ft_free(map, mlx);
+		free(mlx);
+	}
+	ft_free(map, NULL);
 	if (i == 0)
 		ft_putstr_fd("Error occurred: init the mlx\n", 2);
 	else if (i == 1)
 		ft_putstr_fd("Your map is too big ! This is not a Ubisoft game !\n", 2);
 	else if (i == 2)
-		ft_putstr_fd("Error occurred: create mlx window\n", 2);
+		ft_putstr_fd("Error occurred: window creation\n", 2);
+	else if (i == 3)
+		ft_putstr_fd("Error occurred: image creation\n", 2);
 	exit(1);
 }
 

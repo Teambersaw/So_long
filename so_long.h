@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:00 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/23 15:25:44 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/24 17:30:26 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,11 @@ typedef struct s_init
 t_elem	ft_init_elem(void);
 t_parse	ft_init_parse(char *map);
 t_pos	ft_init_pos(void);
-t_image	ft_init_image(void *mlx, int var);
+t_image	ft_init_image(void *mlx, int var, char **map, void *mlx_win);
 t_init	ft_init_struct(int ac, char **av);
 t_pos	ft_get_pos(char **map);
-void	ft_hola(char **map, void *mlx, int i);
+void	ft_hola(char **map, void *mlx, int i, void *mlx_win);
+void	ft_free_image(t_image *image, void *mlx, char **map, void *mlx_win);
 int		ft_size(void *mlx, char **map);
 char	**ft_initmap(int fd);
 int		lenso(const char *s);
