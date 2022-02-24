@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:22:20 by jrossett          #+#    #+#             */
-/*   Updated: 2022/02/14 16:27:37 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/24 19:49:59 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	ft_free(char **tab, char *str)
 	if (tab)
 	{
 		while (tab[++i])
-			free(tab[i]);
+			if (tab[i])
+				free(tab[i]);
 		free(tab);
 	}
 	if (str)
@@ -63,4 +64,21 @@ t_parse	ft_init_parse(char *map)
 	parse.k = 0;
 	parse.len = lenso(map);
 	return (parse);
+}
+
+char	**ft_name_image(int var)
+{
+	char	**name;
+
+	name = malloc(sizeof(char *) * 7);
+	if (!name)
+		return (NULL);
+	name[0] = ft_strjoin_gnl(ft_itoa(var), "sprites/floor.xpm");
+	name[1] = ft_strjoin_gnl(ft_itoa(var), "sprites/wall.xpm");
+	name[2] = ft_strjoin_gnl(ft_itoa(var), "sprites/objet.xpm");
+	name[3] = ft_strjoin_gnl(ft_itoa(var), "sprites/exit.xpm");
+	name[4] = ft_strjoin_gnl(ft_itoa(var), "sprites/perso.xpm");
+	name[5] = ft_strjoin_gnl(ft_itoa(var), "sprites/exiton.xpm");
+	name[6] = NULL;
+	return (name);
 }

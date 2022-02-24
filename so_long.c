@@ -6,7 +6,7 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:03 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/24 17:30:50 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/24 19:04:30 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_pos	ft_get_pos(char **map)
 int	key_hook(int key_code, t_init *init)
 {
 	if (key_code == 65307)
-		ft_quit(init);
+		mlx_loop_end(init->mlx);
 	if (key_code == 'w' || key_code == 65362)
 		ft_move_up(init);
 	if (key_code == 's' || key_code == 65364)

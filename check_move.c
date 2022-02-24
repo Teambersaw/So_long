@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrossett <jrossett@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:59:54 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/22 15:00:49 by jrossett         ###   ########.fr       */
+/*   Updated: 2022/02/24 19:01:13 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_move_up(t_init *init)
 	init->move.y -= 1;
 	if (init->sac == init->max && init->map[init->move.y][init->move.x] == 'E')
 	{
-		ft_quit(init);
+		mlx_loop_end(init->mlx);
 	}
 	if (init->map[init->move.y + 1][init->move.x] == 'E')
 		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.exit,
@@ -42,7 +42,7 @@ void	ft_move_down(t_init *init)
 	init->move.y += 1;
 	if (init->sac == init->max && init->map[init->move.y][init->move.x] == 'E')
 	{
-		ft_quit(init);
+		mlx_loop_end(init->mlx);
 	}
 	if (init->map[init->move.y - 1][init->move.x] == 'E')
 		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.exit,
@@ -65,7 +65,7 @@ void	ft_move_right(t_init *init)
 	init->move.x += 1;
 	if (init->sac == init->max && init->map[init->move.y][init->move.x] == 'E')
 	{
-		ft_quit(init);
+		mlx_loop_end(init->mlx);
 	}
 	if (init->map[init->move.y][init->move.x - 1] == 'E')
 		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.exit,
@@ -88,7 +88,7 @@ void	ft_move_left(t_init *init)
 	init->move.x -= 1;
 	if (init->sac == init->max && init->map[init->move.y][init->move.x] == 'E')
 	{
-		ft_quit(init);
+		mlx_loop_end(init->mlx);
 	}
 	if (init->map[init->move.y][init->move.x + 1] == 'E')
 		mlx_put_image_to_window(init->mlx, init->mlx_win, init->image.exit,
@@ -104,7 +104,26 @@ void	ft_move_left(t_init *init)
 		ft_move(init);
 }
 
-void	ft_quit(t_init *init)
+int	ft_size(void *mlx, char **map)
 {
-	mlx_loop_end(init->mlx);
+	int	x;
+	int	y;
+	int	var;
+	int	i;
+
+	x = 0;
+	y = 0;
+	i = 0;
+	var = 128;
+	while (map[i])
+		i++;
+	mlx_get_screen_size(mlx, &x, &y);
+	while (var >= 16)
+	{
+		if (x >= lenso(map[0]) * var && y >= i * var)
+			return (var);
+		else
+			var = var / 2;
+	}
+	return (0);
 }

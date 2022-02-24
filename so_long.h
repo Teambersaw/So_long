@@ -6,7 +6,7 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:43:00 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/24 17:30:26 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/24 19:33:44 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_pos	ft_init_pos(void);
 t_image	ft_init_image(void *mlx, int var, char **map, void *mlx_win);
 t_init	ft_init_struct(int ac, char **av);
 t_pos	ft_get_pos(char **map);
+char	**ft_name_image(int var);
 void	ft_hola(char **map, void *mlx, int i, void *mlx_win);
 void	ft_free_image(t_image *image, void *mlx, char **map, void *mlx_win);
 int		ft_size(void *mlx, char **map);
@@ -102,6 +103,5 @@ void	ft_move_right(t_init *init);
 void	ft_collect(t_init *init);
 void	ft_exit(t_init *init);
 void	ft_move(t_init *init);
-void	ft_quit(t_init *init);
 
 #endif

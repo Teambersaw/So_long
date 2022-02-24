@@ -6,13 +6,13 @@
 /*   By: teambersaw <teambersaw@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:59:10 by teambersaw        #+#    #+#             */
-/*   Updated: 2022/02/24 17:34:38 by teambersaw       ###   ########.fr       */
+/*   Updated: 2022/02/24 19:00:03 by teambersaw       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_free_image(t_image *image, void *mlx, char **map, void *mlx_win)
+void	ft_free_image(t_image *image, void *mlx, char **map, void *mlx_win)
 {
 	if (image->exit)
 		mlx_destroy_image(mlx, image->exit);
@@ -48,30 +48,6 @@ void	ft_hola(char **map, void *mlx, int i, void *mlx_win)
 	else if (i == 3)
 		ft_putstr_fd("Error occurred: image creation\n", 2);
 	exit(1);
-}
-
-int	ft_size(void *mlx, char **map)
-{
-	int	x;
-	int	y;
-	int	var;
-	int	i;
-
-	x = 0;
-	y = 0;
-	i = 0;
-	var = 128;
-	while (map[i])
-		i++;
-	mlx_get_screen_size(mlx, &x, &y);
-	while (var >= 16)
-	{
-		if (x >= lenso(map[0]) * var && y >= i * var)
-			return (var);
-		else
-			var = var / 2;
-	}
-	return (0);
 }
 
 void	ft_collect(t_init *init)
